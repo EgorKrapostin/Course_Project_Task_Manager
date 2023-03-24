@@ -23,6 +23,28 @@ public class TaskService {
         taskMap.remove(task.getId());
     }
 
+    public Task createNewTask(int occurance, String title, String description, Task.Type type, LocalDate localDate) {
+        Task task = null;
+        switch (occurance) {
+            case 1:
+                task = new OneTimeTask(title, type, localDate, description);
+                break;
+            case 2:
+                task = new DailyTask(title, type, localDate, description);
+                break;
+            case 3:
+                task = new WeeklyTask(title, type, localDate, description);
+                break;
+            case 4:
+                task = new MonthlyTask(title, type, localDate, description);
+                break;
+            case 5:
+                task = new YearlyTask(title, type, localDate, description);
+                break;
+        }
+        return task;
+    }
+
     private static boolean taskFilter(Task task) {
         LocalDate date = LocalDate.now();
         LocalDate date1 = task.getDate();

@@ -9,21 +9,18 @@ public class Main {
         Task.Type typePersonal = Task.Type.PERSONAL;
         System.out.println("Введи тип задачи (1.WORK/2.PERSOAL)");
         int input = scanner.nextInt();
-        Task task = new OneTimeTask("onetime", input == 1 ? typeWork : typePersonal, LocalDate.now(), "OneTimeTask");
-        Task task1 = new WeeklyTask("weekly", input == 1 ? typeWork : typePersonal, LocalDate.now().plusWeeks(1), "WeeklyTask");
-        Task task2 = new MonthlyTask("monthly", input == 1 ? typeWork : typePersonal, LocalDate.now().plusMonths(1), "MonthlyTask");
-        Task task3 = new YearlyTask("yearly", input == 1 ? typeWork : typePersonal, LocalDate.now().plusYears(1), "YearlyTask");
+        System.out.println("Выбери повторяемось: 1.Однократная, 2.Ежедневная, 3.Недельная, 4.Месячная, 5.Годовая");
+        int occurance = scanner.nextInt();
+        System.out.println("Введи название задачи");
+        String title = scanner.next();
+        System.out.println("Введи описание задачи");
+        String description = scanner.next();
+
         Map<Integer, Task> taskMap = new HashMap<>();
         List<Task> removedTasks = new ArrayList<>();
 
         TaskService taskService = new TaskService(taskMap, removedTasks);
-        taskService.addTask(task);
-        taskService.addTask(task1);
-        taskService.addTask(task2);
-        taskService.addTask(task3);
-        System.out.println(taskService);
-        taskService.removeTask(task3);
-        System.out.println(taskService);
+        taskService.addTask(taskService.createNewTask(occurance, title, description, input == 1 ? typeWork : typePersonal, LocalDate.of(2023, 3, 25)));
         taskService.getAllByDate();
     }
 }

@@ -39,25 +39,6 @@ public abstract class Task {
 
     public abstract boolean appearsIn(LocalDate localDate);
 
-
-
-//    public class DailyTask extends Task {
-//
-//        public DailyTask(String title, Type type, LocalDateTime dateTime, String description) {
-//            super(title, type, dateTime, description);
-//        }
-////        @Override
-////        LocalDate date = new
-////        public boolean appearsIn(LocalDate date) {
-////            if (date != LocalDate date) {
-////                return false;
-////            } else {
-////                return true;
-////            }
-////        }
-//    }
-
-
     public String getTitle() {
         return title;
     }
