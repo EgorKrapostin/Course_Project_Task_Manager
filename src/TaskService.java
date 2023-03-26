@@ -41,9 +41,30 @@ public class TaskService {
             case 5:
                 task = new YearlyTask(title, type, localDate, description);
                 break;
+            default:
+                System.out.println("Такй повторяемости не существует");
+                task = null;
         }
         return task;
     }
+
+    public Task.Type chooseType(int x) {
+        Task.Type type = null;
+        switch (x) {
+            case 1:
+                type = Task.Type.WORK;
+                break;
+            case 2:
+                type = Task.Type.PERSONAL;
+            default:
+                System.out.println("Такого типа задачи не существует");
+                type = null;
+        }
+
+        return type;
+    }
+
+
 
     private static boolean taskFilter(Task task) {
         LocalDate date = LocalDate.now();
